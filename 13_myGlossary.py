@@ -1,4 +1,4 @@
-# myGlossary_Start.py
+# myGlossary.py
 # 사전 데이터 타입을 사용하는 빠른 용어 프로그램
 
 from tkinter import *
