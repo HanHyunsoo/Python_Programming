@@ -26,6 +26,10 @@ bat_R = bat.Bat(table = my_table, width = 15, height = 100,
 
 #### 함수
 def game_flow():
+    # 공이 배트에 닿으면
+    bat_L.detect_collision(my_ball)
+    bat_R.detect_collision(my_ball)
+    
     my_ball.move_next()
     window.after(50, game_flow)
 

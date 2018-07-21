@@ -20,6 +20,53 @@ class Bat:
         self.rectangle = self.table.draw_rectangle(self)
         
     #### 메서드
+    def detect_collision(self, ball):
+        collision_detect = ""
+        collision = False
+        feel = 5
+
+        # 배트 변수
+        top = self.y_posn
+        bottom = self.y_posn + self.height
+        left = self.x_posn
+        right = self.x_posn + self.width
+        v_centre = top + (self.height / 2)
+        h_centre = left + (self.width / 2)
+
+        # 볼(공) 변수
+        top_b = ball.y_posn
+        bottom_b = ball.y_posn + ball.height
+        left_b = ball.x_posn
+        right_b = ball.x_posn + ball.width
+        r = (right_b - left_b) / 2
+        v_centre_b = top_b + r
+        h_centre_b = left_b + r
+
+        if((bottom_b > top) and (top_b < bottom) and (right_b >left) and (left_b < right)):
+            collision = True
+
+        if (collision):
+            if ((top_b > top - r) and (bottom_b < bottom + r) and (right_b > right) and (left_b <= right)):
+                collision_direction = "E"
+                ball.x_speed = abs(ball.x_speed)
+
+            elif ((left_b > left - r) and (right_b < right + r) and (bottom_b > bottom) and (top_b <= bottom)):
+                collision_direction = "S"
+                ball.x_speed = abs(ball.y_speed)
+
+            elif ((left_b > left - r) and (right_b < right + r) and (top_b < top) and (bottom_b >= top)):
+                collision_direction = "N"
+                ball.x_speed = -abs(ball.y_speed)
+
+            elif ((top_b > top - r) and (bottom_b < bottom + r) and (left_b < left) and (right_b >= left)):
+                collision_direction = "W"
+                ball.x_speed = -abs(ball.x_speed)
+
+            else:
+                collision_direction = "miss"
+
+            return (collision, collision_direction)
+        
     def move_up(self, master):
         self.y_posn = self.y_posn - self.y_speed
         if (self.y_posn <= 0):
