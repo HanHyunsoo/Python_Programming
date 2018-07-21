@@ -34,8 +34,13 @@ def game_flow():
     window.after(50, game_flow)
 
 # 배트를 제어하기 위해 키보드의 키에 연결
+# 왼쪽 배트
+window.bind("W", bat_L.move_up)
 window.bind("w", bat_L.move_up)
+window.bind("S", bat_L.move_down)
 window.bind("s", bat_L.move_down)
+
+# 오른쪽 배트
 window.bind("<Up>", bat_R.move_up)
 window.bind("<Down>", bat_R.move_down)
 

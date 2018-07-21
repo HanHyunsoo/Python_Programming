@@ -20,7 +20,7 @@ class Bat:
         self.rectangle = self.table.draw_rectangle(self)
         
     #### 메서드
-    def detect_collision(self, ball):
+    def detect_collision(self, ball, sides_sweet_spot = True, topnbottom_sweet_spot = False):
         collision_detect = ""
         collision = False
         feel = 5
@@ -64,6 +64,16 @@ class Bat:
 
             else:
                 collision_direction = "miss"
+
+            if((sides_sweet_spot == True) and (collision_direction == "W" or collision_direction == "E")):
+                # 배트의 중심에서 얼마나 먼 거리에서 충돌이 발생했는지 y값을 찾습니다.
+                adjustment = (-(v_centre - v_centre_b)) / (self.height / 2)
+                ball.y_speed = feel * adjustment
+
+            if((topnbottom_sweet_spot == True) and (collision_direction == "N" or collision_direction == "S")):
+                # 배트의 중심에서 얼마나 먼 거리에서 충돌이 발생했는지 x값을 찾습니다.
+                adjustment = (-(h_centre - h_centre_b)) / (self.width / 2)
+                ball.x_speed = feel * adjustment
 
             return (collision, collision_direction)
         
