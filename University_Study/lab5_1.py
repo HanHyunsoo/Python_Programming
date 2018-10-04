@@ -12,7 +12,14 @@ def subtract(a, b):
     # a: 첫번째 수, b: 두번째 수
     return a - b
 
-# a와 b 변수 생성
-a, b = 4, 9
 # 함수를 이용해 a, b의 차를 구한다.
-print(subtract(a, b))
+print(subtract(4, 9))
+print(subtract(b=4, a=1)) # 키워드에 의한 매개변수 가능
+
+a = 10
+b = True
+c = '김치'
+
+print(type(a)) # 변수의 타입을 반환하는 함수
+print(type(b))
+print(type(c))
