@@ -17,7 +17,7 @@ def prod(a, b):
 # 재귀함수를 이용하여 구현한 함수 r_prod
 def r_prod(a, b):
     if b == 1: return a
-    else: return a + r_prod(a, b - 1)\
+    else: return a + r_prod(a, b - 1)
 
 print(prod(3, 6))
 print(r_prod(3, 6))
