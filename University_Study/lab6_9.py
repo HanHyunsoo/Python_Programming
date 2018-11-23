@@ -14,6 +14,7 @@ s3 = "tst"
 s4 = "apple"
 s5 = "test1234Test"
 s6 = "나는 \"왕\"이다."
+s7 = "abc\\d"
 
 r = re.compile('[\d]') # 숫자를 찾아서 반환
 print(r.search(s))
@@ -43,6 +44,10 @@ print(re.search('[A-Z]', s5))
 # s5에서 소문자 찾기
 print(re.search('[a-z]', s5))
 
-# s6에서 \의 위치 찾기
+# s6에서 "와 \의 위치 찾기
 print(re.search('\"', s6))
-print(re.search('\"', s6))
+print(re.search("\\\\", s6))
+
+# escape 문자 출력
+print(s7)
+print(re.search("\\\\", s7)) # 패턴을 명시할 때는 \를 찾고 싶으면, \\\\로 명시한다.

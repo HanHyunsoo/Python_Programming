@@ -7,6 +7,7 @@
 """
 import re
 
+s5 = "test1234Test"
 s7 = 'href =        "C:\Python34\Kim.jpg"'
 s8 = 'href="C:\Python34\Kim.jpg"'
 
@@ -26,3 +27,25 @@ print(r.search(s8))
 r = re.compile('href\s*=\s*')
 print(r.search(s7))
 print(r.search(s8))
+
+# group 이용하기
+r = re.compile("href\s*=\s*\"")
+result = r.search(s7)
+print(result.group()) # group은 매칭된 결과를 반환
+
+# =를 기준으로 분리
+print(re.split("=", s8))
+
+# 주어진 패턴에 일치하는 부분문자열을 다른 문자열로 치환
+print(re.sub("e+", "i", s7))
+
+# 매칭되는 모든 문자열을 리스트로 반환
+print(re.findall("\d", s5))
+
+# s7에서 =의 좌우에 빈 칸이 있든 없든 상관 없이 찾아서 두 개의 subgroup으로 나누기
+r = re.compile("(href\s*=\s*)(\".*\")") # subgroup으로 나누기 위해서는 ()를 사용
+result = r.search(s8)
+print(result.group(0)) # 0은 매칭되는 전체. 디폴트 매개변수 값이 0
+print(result.group(1)) # 1은 첫번째 ()에 매칭되는 부분.
+print(result.group(2)) # 2은 두번째 ()에 매칭되는 부분.
+print(result.groups()) # subgroup들을 튜플로 반환
