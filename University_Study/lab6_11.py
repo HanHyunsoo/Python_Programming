@@ -1,9 +1,9 @@
 """
 챕터: day6
 주제: 정규식
-문제: 정규식 기호 연습
+문제: 정규식 기호 연습, 과제
 작성자: 한현수
-작성일: 2018.11.22
+작성일: 2018.11.22, 2018.11.28
 """
 import re
 """
@@ -16,16 +16,16 @@ r = re.compile("a")
 print(r.search("apple"))
 r = re.compile("b")
 print(r.search("apple"))
-r = re.compile("[aeiou]")
+r = re.compile("[aeiou]") #[]안에서 aeiou가 있으면 a,e,i,o,u를 찾음
 print(r.search(input("<입력> ")))
 
 """
 4. 입력한 단어가 a로 시작하는지 확인
 5. 입력한 단어가 e로 끝나는지 검사
 """
-r = re.compile("^a")
+r = re.compile("^a") # a로 시작
 print(r.search(input("<입력> ")))
-r = re.compile("e$")
+r = re.compile("e$") # e로 끝
 print(r.search(input("<입력> ")))
 
 """
@@ -37,7 +37,8 @@ B. 출력 예:
 8
 5000
 """
-result = re.findall("\d*\d", input("<입력> "))
+# 숫자에 해당하는 부분을 리스트로 result 변수에 저장
+result = re.findall("\d+", input("<입력> "))
 print("출력 ")
 for i in result:
     print(i)
@@ -46,7 +47,7 @@ for i in result:
 10. 입력된 문장에서 <이후에 나오는 단어들을 출력하라.
 A. 입력 예: <2015> <김일수> <성공회대학교>
 """
-r = re.compile("<+\w*>")
+r = re.compile("<(\w+)>") # ()를 이용해서 이 안에 있는 부분만 찾아낼 수 있음
 result = re.findall(r, input("<입력> "))
 print("출력: ")
 for j in result:
