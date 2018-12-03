@@ -45,11 +45,11 @@ while 1:
         elif menu == 3:
             if b == 0:
                 raise ZeroDivisionError
-            print("%d / %d = %f" % (a, b, a % b))
+            print("%d / %d = %f" % (a, b, a / b))
         else:
             print("%d * %d = %d" % (a, b, a * b))
         break
     except ValueError:
-        print("메뉴를 다시 선택해 주세요.\n메뉴선택: ", end = '')
+        print("메뉴를 다시 선택해 주세요.\n메뉴선택:", end = '')
     except ZeroDivisionError:
         print("0으로 나눌수 없습니다.\n메뉴선택: ", end = '')
